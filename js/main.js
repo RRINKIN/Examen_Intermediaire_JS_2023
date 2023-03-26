@@ -36,10 +36,14 @@ function pageGenerator() {
             // Add title
             monSousTitre.innerHTML = `Question(s) ${maPage}/${lengthQuestionnaire}`
 
+            // Create form
+            let newForm = document.createElement('form');
+            maLocation.appendChild(newForm);
+
             // Create elements of the table
             let newTable = document.createElement('table');
             newTable.classList.add(`Table${maPage}`);
-            maLocation.appendChild(newTable);
+            newForm.appendChild(newTable);
 
             // Create title
             let newTableRow1 = document.createElement('tr');
@@ -86,30 +90,30 @@ function pageGenerator() {
                 newTableRow2.appendChild(newTableDetail);
                 if (monType == "boolean") {
                     let Oui = document.createElement('td');
-                    Oui.innerHTML = `<input type="radio" id="Q${compteur}Oui" name="Q${compteur}" value="Oui">`;
+                    Oui.innerHTML = `<input type="radio" id="Q${compteur}Oui" name="Q_P${maPage}_Q${compteur}" value="Oui">`;
                     newTableRow2.appendChild(Oui);
                     let Non = document.createElement('td');
-                    Non.innerHTML = `<input type="radio" id="Q${compteur}Non" name="Q${compteur}" value="Non">`;
+                    Non.innerHTML = `<input type="radio" id="Q${compteur}Non" name="Q_P${maPage}_Q${compteur}" value="Non">`;
                     newTableRow2.appendChild(Non);
                 } else if (monType == "scale") {
                     let Ti = document.createElement('td');
-                    Ti.innerHTML = `<input type="radio" id="Q${compteur}TI" name="Q${compteur}" value="tresInsatisfait">`;
+                    Ti.innerHTML = `<input type="radio" id="Q${compteur}TI" name="Q_P${maPage}_Q${compteur}" value="tresInsatisfait">`;
                     newTableRow2.appendChild(Ti);
                     let I = document.createElement('td');
-                    I.innerHTML = `<input type="radio" id="Q${compteur}I" name="Q${compteur}" value="insatisfait">`;
+                    I.innerHTML = `<input type="radio" id="Q${compteur}I" name="Q_P${maPage}_Q${compteur}" value="insatisfait">`;
                     newTableRow2.appendChild(I);
                     let N = document.createElement('td');
-                    N.innerHTML = `<input type="radio" id="Q${compteur}N" name="Q${compteur}" value="Neutre">`;
+                    N.innerHTML = `<input type="radio" id="Q${compteur}N" name="Q_P${maPage}_Q${compteur}" value="Neutre">`;
                     newTableRow2.appendChild(N);
                     let S = document.createElement('td');
-                    S.innerHTML = `<input type="radio" id="Q${compteur}S" name="Q${compteur}" value="Satisfait">`;
+                    S.innerHTML = `<input type="radio" id="Q${compteur}S" name="Q_P${maPage}_Q${compteur}" value="Satisfait">`;
                     newTableRow2.appendChild(S);
                     let Ts = document.createElement('td');
-                    Ts.innerHTML = `<input type="radio" id="Q${compteur}Ts" name="Q${compteur}" value="tresSatisfait">`;
+                    Ts.innerHTML = `<input type="radio" id="Q${compteur}Ts" name="Q_P${maPage}_Q${compteur}" value="tresSatisfait">`;
                     newTableRow2.appendChild(Ts);
                 } else if (monType == "text") {
                     let texte = document.createElement('td');
-                    texte.innerHTML = `<input type="text" id="Q${compteur}texte" name="Q${compteur}" value="text" minlength="4" maxlength="8" size="10">`;
+                    texte.innerHTML = `<input type="text" id="Q${compteur}texte" name="Q_P${maPage}_Q${compteur}" value="text" minlength="4" maxlength="8" size="10">`;
                     newTableRow2.appendChild(texte);
                 }
                 newTableRow2.classList.add(`Table${monType}`);
@@ -117,9 +121,8 @@ function pageGenerator() {
                 compteur += 1;
             }
 
-            // Hidde previous table 
+            // Hide previous table 
             let page = maPage - 1;
-            console.log(page);
             let toBeHidden = document.querySelector(`.Table${page}`);
             toBeHidden.classList.add("hidden");    
         }
@@ -141,8 +144,9 @@ function pageGenerator() {
 
 // Bouton "next""
 let btnNext = document.getElementById("next");
-btnNext.addEventListener("click", pageGenerator);
 //btnNext.addEventListener("click", checkAlert);
+btnNext.addEventListener("click", pageGenerator);
+
 
 
 
