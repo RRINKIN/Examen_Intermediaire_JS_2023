@@ -35,7 +35,7 @@ function pageGenerator() {
 
             // Add title
             monSousTitre.innerHTML = `Question(s) ${maPage}/${lengthQuestionnaire}`
-        
+
             // Create elements of the table
             let newTable = document.createElement('table');
             newTable.classList.add(`Table${maPage}`);
@@ -116,6 +116,12 @@ function pageGenerator() {
                 newTable.appendChild(newTableRow2);
                 compteur += 1;
             }
+
+            // Hidde previous table 
+            let page = maPage - 1;
+            console.log(page);
+            let toBeHidden = document.querySelector(`.Table${page}`);
+            toBeHidden.classList.add("hidden");    
         }
     }
     xhrPage.send(null);
@@ -135,9 +141,6 @@ function pageGenerator() {
 
 // Bouton "next""
 let btnNext = document.getElementById("next");
-let toBeHidden = document.querySelector(`.Table${maPage}`);
-console.log(toBeHidden);
-//toBeHidden.classList.add("hidden");
 btnNext.addEventListener("click", pageGenerator);
 //btnNext.addEventListener("click", checkAlert);
 
