@@ -1,0 +1,41 @@
+.error{
+    background-color: lightpink;
+}
+
+#message{
+    position:absolute;
+    left:50%;
+}
+
+table {
+    width: 100%;
+}
+
+tr, th, td {
+    border: 0.5px grey solid;
+}
+
+.Tableboolean {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    grid-gap: 0px;
+    grid-auto-rows: minmax(20px, auto)
+}
+
+.Tablescale {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 0px;
+    grid-auto-rows: minmax(20px, auto)
+}
+
+.Tabletext {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 0px;
+    grid-auto-rows: minmax(20px, auto)
+}
+
+.hidden {
+    display: none;
+}
