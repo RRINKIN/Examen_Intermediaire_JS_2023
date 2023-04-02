@@ -124,28 +124,37 @@ function pageGenerator() {
             // Hide previous table 
             let page = maPage - 1;
             let toBeHidden = document.querySelector(`.Table${page}`);
-            toBeHidden.classList.add("hidden");    
+            //toBeHidden.classList.add("hidden");
+            toBeHidden.remove();   
         }
     }
     xhrPage.send(null);
 }
 
-// Gestion de l'alerte
-/*function checkAlert() {
+// Remove the alert
+function checkAlert() {
     let alerte = document.querySelectorAll('input');
     console.log(alerte);
-    for(i in alerte){
+    let checkedInput = 0;
+    for (let i = 0; i < (alerte.length -2); i++) {
         console.log(i);
         if (i.checked) {  
             console.log("c'est checked");
+            checkedInput++;
+        } else {
+            console.log("not checked");
         }
-    }
-};*/
+    console.log(checkedInput);
+    }   
+}
 
 // Bouton "next""
 let btnNext = document.getElementById("next");
-//btnNext.addEventListener("click", checkAlert);
-btnNext.addEventListener("click", pageGenerator);
+btnNext.addEventListener("click", () => {
+    checkAlert();
+    //pageGenerator();
+});
+
 
 
 
